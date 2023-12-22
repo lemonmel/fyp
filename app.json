@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "HearingTestMobileApp",
-    "slug": "HearingTestMobileApp",
+    "slug": "hearingtestmobileapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.chinfang.HearingTestMobileApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9521f4b4-b6b5-4563-a470-4169662ac395"
+      }
+    },
+    "owner": "chinfang"
   }
 }
