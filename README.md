@@ -9,9 +9,8 @@ The mobile application is build in React Native and customized Native Module dev
 
 ## To Start
 ```
-git clone
 npm install
-npx expo run:android / npx expo run:ios
+npx expo run:android
 ```
 
 ## Credit
