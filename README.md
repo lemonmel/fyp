@@ -1,15 +1,15 @@
 # Hearing Test Mobile Application
 This mobile application includes modules of test module, history and report module, info module, authentication module and profile module.
-For android, it involves native module named tone that carry out narrowband and notched noise test along with tone generation for 500Hz, 2000Hz, 1000Hz, 4000Hz, 8000Hz
+For android, it involves native module named tone that carry out narrowband and notched noise test along with tone generation for 500Hz, 2000Hz, 1000Hz, 4000Hz, 8000Hz.
 
 ## To run
-### main (Android)
+### main (Android ver)
 ```
 npm install
 npx expo run:android
 ```
 
-### ios (iOS)
+### branch ios (iOS ver)
 ```
 npm install
 npx expo start
