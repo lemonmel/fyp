@@ -15,12 +15,6 @@ npm install
 npx expo start
 ```
 
-## Application Deployment
-Android:
-> https://expo.dev//accounts/chinfang/projects/hearingtestmobileapp/builds/71555e94-77f3-4e14-aeaa-a2a2d67a8b98
-iOS:
-> exp://exp.host/@chinfang/hearing-ios?release-channel=default
-
 ## Credit
 This application was developed with the collaboration between Dr Kumar Seluakumaran from the Auditory lab, Dept of Physiology, Faculty of Medicine, University of Malaya and Faculty of Computer Sceience and Information Technology, University of Malaya <br/>
 Copytight @ 2023 University Malaya
