@@ -3,7 +3,7 @@ import { View, Text, ScrollView, SafeAreaView, TouchableOpacity, Alert} from 're
 import { VictoryScatter, VictoryAxis, VictoryChart, VictoryArea, } from "victory-native";
 import { styles, primary, graph_point_1, graph_point_2, graph_area} from '../element/style.js';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { loadCurrentTest, deleteData } from '../loader/reportManager.js';
+import { loadCurrentTest, deleteTest } from '../loader/reportManager.js';
 import { Loading } from '../element/Loading.js';
 import { width } from '../element/style.js';
 import { ProgressBar } from '../element/ProgressBar.js';
@@ -40,7 +40,7 @@ function Report({route, navigation}) {
         <View>
           <TouchableOpacity style={{alignSelf: 'flex-end', marginHorizontal: 10}} onPress={() => navigation.navigate('Index')}>
               <MaterialCommunityIcons name="close" color={primary} size={40} />
-          </TouchableOpacity> 
+          </TouchableOpacity>
         </View>
     );
     }
@@ -56,8 +56,8 @@ function Report({route, navigation}) {
     }
   }
 
-  const data = {notched_noise: result.notched, 
-        narrowband: result.narrowband, 
+  const data = {notched_noise: result.notched,
+        narrowband: result.narrowband,
         FS: result.FS,
         side: result.side}
 
@@ -70,7 +70,7 @@ function Report({route, navigation}) {
   }
 
   const area_data = Object.keys(result.nh_range).map((frequency) => ({
-    x: parseInt(frequency) / 1000, 
+    x: parseInt(frequency) / 1000,
     y: result.nh_range[frequency].max,
     y0: result.nh_range[frequency].min,
   }));
@@ -132,7 +132,7 @@ function Report({route, navigation}) {
           <VictoryAxis dependentAxis
             label="Threshold (dB)"
             domain = {[10, 70]}
-            style={{ axisLabel: { padding: 35 } }} 
+            style={{ axisLabel: { padding: 35 } }}
           />
         </VictoryChart>
       </View>
@@ -159,7 +159,7 @@ function Report({route, navigation}) {
       message = 'Your frequency selectivity (FS) measure at one or more frequencies falls outside (or within) the normal range (shaded in light blue). As this is only a screening test, it is possible that your results may not reflect your actual hearing ability. If you are worried about hearing loss, kindly visit an audiologist for a standard hearing test.'
     }
 
-    
+
     return (
       <View>
         <View style={[styles.card, styles.shadow_container]}>
@@ -173,8 +173,8 @@ function Report({route, navigation}) {
           <Text style={[styles.subtitle, {marginTop: 0}]}>{message}</Text>
         </View>
       </View>
-      
-      
+
+
     );
   };
 
@@ -185,7 +185,7 @@ function Report({route, navigation}) {
         style: 'cancel',
       },
       {text: 'Yes', onPress: () => {
-        deleteData(route.params.id)
+        deleteTest(route.params.id)
         navigation.navigate('History Main')
       }},
     ]);
@@ -198,13 +198,13 @@ function Report({route, navigation}) {
     });
     generatePDF(result, localUri)
   }
-  
+
   return (
     <SafeAreaView style={[styles.full_screen_content]}>
       {closeIcon()}
       {progress()}
       <ScrollView style={[styles.content]}>
-      <View style={styles.center}> 
+      <View style={styles.center}>
         <Text style={styles.subtitle}>{result.date}</Text>
       </View>
       {/* <FlatList
@@ -213,7 +213,7 @@ function Report({route, navigation}) {
         renderItem={renderGraph}
         horizontal={true}
         pagingEnabled={true} // Enable pagination effect
-        showsHorizontalScrollIndicator={false} 
+        showsHorizontalScrollIndicator={false}
         onScroll={(event) => {
           const { contentOffset, layoutMeasurement } = event.nativeEvent;
           const page = Math.floor(contentOffset.x / layoutMeasurement.width);
@@ -239,7 +239,7 @@ function Report({route, navigation}) {
         <View
           style={[styles.indicatorDot, {backgroundColor: graph_area}]}
         />
-        <Text>Normal Hearing Range</Text>
+        <Text>Normal FS Measure Range</Text>
       </View>
       {/* <View style={styles.indicatorContainer}>
         <View
@@ -256,7 +256,7 @@ function Report({route, navigation}) {
         </TouchableOpacity>
         <Text>   </Text>
         <TouchableOpacity style = {[styles.small_button]} onPress = {handleShare}>
-          <Text style = {styles.text_in_button}>Save</Text>
+          <Text style = {styles.text_in_button}>Share</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

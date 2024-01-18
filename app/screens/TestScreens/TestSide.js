@@ -28,12 +28,12 @@ function TestSide({navigation}) {
     }
 
     const setRightTest = () => {
-        setPan(1)
+        setPan(0)
         navigateNextPage()
     }
 
     const setLeftTest = () => {
-        setPan(0)
+        setPan(1)
         navigateNextPage()
     }
 

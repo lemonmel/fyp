@@ -118,8 +118,8 @@ export function stop(): void{
   ToneModule.stop();
 }
 
-export function tonePlay(): void{
-  ToneModule.tonePlay();
+export function tonePlay(): String{
+  return ToneModule.tonePlay();
 }
 
 export function setNoiseThreshold(threshold: number): void {
@@ -141,4 +141,3 @@ export function getOrder(): number{
 export function getNoiseThreshold(): number{
   return ToneModule.getNoiseThreshold();
 }
-

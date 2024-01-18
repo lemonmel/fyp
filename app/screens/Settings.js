@@ -107,7 +107,7 @@ function Profile({navigation}) {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </Modal> 
+            </Modal>
             <View style={currentStyle.above}>
                 <Text style={[styles.heading, {color: 'white'}]}> Hello! {thisUser.username} </Text>
                 <Text style={[styles.subtitle, {color: 'white'}]}> Volume Settings:  {Math.round(thisUser.volume * 100)}</Text>
@@ -133,7 +133,7 @@ function Profile({navigation}) {
                 <View style = {{alignItems: 'center', marginBottom: 20}}>
                     <TouchableOpacity style={[styles.button]} onPress={handleSignOut}>
                         <Text style={styles.text_in_button}>Sign Out</Text>
-                    </TouchableOpacity> 
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         </View>
@@ -148,7 +148,7 @@ const currentStyle = StyleSheet.create({
     },
 
     tab:{
-        backgroundColor: 'white', 
+        backgroundColor: 'white',
         flex: 0.3,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,

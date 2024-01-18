@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, Button, TextInput, Alert } from 'react-native';
 import { styles, primary } from '../element/style'
-import { stop, tonePlay, narrowbandOnlyPlay, nextFreq, notchedOnlyPlay, getFrequency, getThreshold, setNoiseThreshold, setThreshold, setNarrowbandOrder, setNotchedOrder, getNoiseThreshold, getOrder } from '../../modules/tone';
+import { stop, setFrequency, tonePlay, narrowbandOnlyPlay, nextFreq, notchedOnlyPlay, getFrequency, getThreshold, setNoiseThreshold, setThreshold, setNarrowbandOrder, setNotchedOrder, getNoiseThreshold, getOrder, setPan, getPan } from '../../modules/tone';
 
 function LabTest() {
-    const [frequency, setFrequency] = useState(getFrequency());
+    const [frequency, setCurrentFrequency] = useState(getFrequency());
     const [volume, setVolume] = useState(getNoiseThreshold().toString());
     const [tone, setTone] = useState(getThreshold().toString());
 
     const playNarrowband = () => {
-        stop()
         setUpVolume()
         console.log("threshold: "+getNoiseThreshold()+" , order:"+getOrder())
         narrowbandOnlyPlay()
@@ -17,7 +16,6 @@ function LabTest() {
     }
 
     const playNotched = () => {
-        stop()
         setUpVolume()
         notchedOnlyPlay()
         Alert.alert('Noise played!', 'Notched noise playing in threshold: '+getNoiseThreshold());
@@ -32,7 +30,6 @@ function LabTest() {
     }
 
     const playTone = () => {
-        stop()
         if(parseFloat(tone) >= 1){
             setThreshold(1)
         }else{
@@ -45,7 +42,19 @@ function LabTest() {
 
     const switchFrequency = () => { //click no
         nextFreq()
-        setFrequency(getFrequency())
+        setCurrentFrequency(getFrequency())
+    }
+
+    const switchPan = () => {
+        if(getPan() == 1){
+            setPan(0)
+        }else{
+            setPan(1)
+        }
+    }
+
+    const setFreq = () => {
+        setFrequency([500, 1000, 2000, 4000, 8000])
     }
 
     return (
@@ -84,7 +93,8 @@ function LabTest() {
                     <Button onPress={playNotched} title="Play" color={primary}/>
                 </View>
                 <Text></Text>
-                <Button onPress={stop} title="Stop Playing" color={primary}/>
+                <Button onPress={switchPan} title="Change Pan" color={primary}/>
+                <Button onPress={setFreq} title="Set Frequency" color={primary}/>
             </View>
         </SafeAreaView>
     );

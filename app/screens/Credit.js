@@ -16,7 +16,7 @@ function Credit({navigation}) {
             </TouchableOpacity>
             <Text style={[styles.heading, {textAlign: 'center'}]}>Credit</Text>
             <Image
-                source = {require('../assets/logo.png')}
+                source = {require('../../assets/logo.png')}
                 style = {{marginTop: 30, width:250, height:100, marginBottom: 20}}
             />
             <Text style={{marginHorizontal: 45, fontSize: 16, marginBottom: 20, textAlign: 'center'}}>This application was developed with the collaboration between Dr Kumar Seluakumaran from the Auditory lab, Dept of Physiology, Faculty of Medicine, University of Malaya and Faculty of Computer Science and Information Technology, University of Malaya.</Text>

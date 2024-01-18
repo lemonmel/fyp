@@ -40,7 +40,7 @@ function ForgotPassword({navigation}) {
     }
 
     return (
-        <KeyboardAvoidingView 
+        <KeyboardAvoidingView
             style = {[styles.content, styles.center]}
             behavior = {Platform.OS === 'ios' ? 'padding':'height'}
         >
@@ -48,7 +48,7 @@ function ForgotPassword({navigation}) {
                 <View style ={[styles.content, styles.center]}>
                     <Text style = {{fontSize: 20}}>Forgot password?</Text>
                     <Image
-                        source = {require('../assets/logo.png')}
+                        source = {require('../../assets/logo.png')}
                         style = {{marginTop: 30, width:250, height:100, marginBottom: 20}}
                     />
                     <Text style={{marginHorizontal: 70, fontSize: 17, marginBottom: 20, textAlign: 'center'}}>We will send you a reset password link to your email</Text>

@@ -37,13 +37,13 @@ function TrialTest({navigation, route}) {
         );
     }
 
-    const clickYes = () => { 
+    const clickYes = () => {
         if(getThreshold() > 0){ //correct
             let temp = mark + 0.2
             setMark(temp)
-            nextFreq()
+            nextTrial()
         }else{
-            resetFreq()
+            resetTrial()
         }
     }
 
@@ -51,20 +51,20 @@ function TrialTest({navigation, route}) {
         if(getThreshold() == 0){ //correct
             let temp = mark + 0.2
             setMark(temp)
-            nextFreq()
+            nextTrial()
         }else{
-            resetFreq()
+            resetTrial()
         }
     }
 
-    const resetFreq = () => {
+    const resetTrial = () => {
         setCurrentIndex(0)
         setMark(0)
         Alert.alert('Incorrect answer','The test will be reset to round 1')
         playSound()
     }
 
-    const nextFreq = () => {
+    const nextTrial = () => {
         if (currentIndex == 4) {
             Alert.alert("Trial Test Pass!","You can now start the test!");
         } else {

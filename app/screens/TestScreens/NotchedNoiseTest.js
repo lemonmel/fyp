@@ -4,7 +4,7 @@ import { styles, width } from '../../element/style.js';
 import { Close } from '../../element/Close.js';
 import { ProgressBar } from '../../element/ProgressBar.js';
 import { addNotchedResult, getNotchedResult,  notchedPlay, notchedOnlyPlay, increaseThreshold, nextFreq, isAllTested, getThreshold, getFrequency, revertSettings, decreaseThreshold, getNoiseThreshold, getDB } from '../../../modules/tone';
-import { addData } from '../../loader/reportManager.js';
+import { addTest } from '../../loader/reportManager.js';
 
 function NotchedNoiseTest({navigation, route}) {
     const [text, setText]= useState('Noise Playing');
@@ -15,7 +15,7 @@ function NotchedNoiseTest({navigation, route}) {
 
     const navigateNextPage = async() => {
         console.log("handling adding data...")
-        const data = await addData()
+        const data = await addTest()
         navigation.navigate('CompleteTest', {id: data.id})
     }
 
@@ -59,7 +59,7 @@ function NotchedNoiseTest({navigation, route}) {
             const lastThreeElements = result.slice(-2)
             const sum = lastThreeElements.reduce((acc, current) => acc + current, 0) + currentDB
             const average = sum / 3
-            
+
             //record to narrowband class (push average)
             addNotchedResult(average)
             console.log(getNotchedResult())

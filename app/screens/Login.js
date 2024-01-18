@@ -7,14 +7,14 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 function Login({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if(user){
                 navigation.navigate('Home');
             }
         })
-        
+
         return unsubscribe;
     }, [])
 
@@ -50,7 +50,7 @@ function Login({navigation}) {
     }
 
     return (
-        <KeyboardAvoidingView 
+        <KeyboardAvoidingView
             style = {[styles.content, styles.center]}
             behavior = {Platform.OS === 'ios' ? 'padding':'height'}
         >
@@ -58,7 +58,7 @@ function Login({navigation}) {
                 <View style ={[styles.content, styles.center]}>
                     <Text style = {{fontSize: 20}}>Already have an account?</Text>
                     <Image
-                        source = {require('../assets/logo.png')}
+                        source = {require('../../assets/logo.png')}
                         style = {{marginTop: 30, width:250, height:100}}
                     />
                     <TextInput

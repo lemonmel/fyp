@@ -43,7 +43,7 @@ function NarrowbandTest({navigation, route}) {
         }
         increaseThreshold()
         playSound()
-        
+
     }
 
     const decreaseAmplitude = () => { //click yes
@@ -57,7 +57,7 @@ function NarrowbandTest({navigation, route}) {
             const lastThreeElements = result.slice(-2)
             const sum = lastThreeElements.reduce((acc, current) => acc + current, 0) + currentDB
             const average = sum / 3
-            
+
             //record to narrowband class (push average)
             addNarrowbandResult(average)
 
@@ -74,6 +74,7 @@ function NarrowbandTest({navigation, route}) {
                 playSound()
             }
         }else if(yes >= 0){
+            console.log("yes>=0")
             //record current dB
             const currentDB = getDB()
             setResult(prevResult => [...prevResult, currentDB])
@@ -83,6 +84,7 @@ function NarrowbandTest({navigation, route}) {
         }
         if(yes<4){
             decreaseThreshold()
+            console.log("clicked yes:"+getThreshold())
             playSound()
         }
     }

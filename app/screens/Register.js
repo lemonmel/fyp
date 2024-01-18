@@ -34,12 +34,12 @@ function Register({navigation}) {
             alert('Password Not Matched');
             return;
         }
-        
+
         //Process SignUp
         createUserWithEmailAndPassword(auth, email, password)
         .then(userCredentials =>{
             const user = userCredentials.user;
-            
+
             async function addUser(){
                 const newUser = await setDoc(doc(db, "users", user.uid), {
                     username: username,
@@ -50,7 +50,7 @@ function Register({navigation}) {
 
             const docRef = addUser();
             navigation.navigate("Questionnaire", {username: username})
-            
+
         })
         .catch(error => {
             if(error.code == 'auth/invalid-email'){
@@ -68,15 +68,16 @@ function Register({navigation}) {
     }
 
     return (
-        <KeyboardAvoidingView 
-            style = {[styles.content, styles.center, {marginTop: -70}]}
+        <ScrollView style={styles.content}>
+        <KeyboardAvoidingView
+            style = {[styles.content, styles.center]}
             behavior = {Platform.OS === 'ios' ? 'padding':'height'}
         >
             <TouchableWithoutFeedback onPress = {Keyboard.dismiss}>
                 <View style = {{alignItems:'center'}}>
-                <Text style = {{fontSize: 20}}>Register an account</Text>
+                <Text style = {{fontSize: 20, marginTop:10}}>Register an account</Text>
                     <Image
-                        source = {require('../assets/logo.png')}
+                        source = {require('../../assets/logo.png')}
                         style = {{marginTop: 30, width:250, height:100, marginBottom: 20}}
                     />
                     <TextInput
@@ -114,6 +115,7 @@ function Register({navigation}) {
                 </View>
             </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
+        </ScrollView>
     );
 }
 export default Register;

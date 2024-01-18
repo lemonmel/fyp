@@ -6,7 +6,7 @@ import { auth, db } from '../database/firebase.js';
 import { doc, setDoc } from 'firebase/firestore';
 import SelectDropdown from 'react-native-select-dropdown';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Slider from '@react-native-community/slider'; 
+import Slider from '@react-native-community/slider';
 import { narrowbandOnlyPlay, setNoiseThreshold } from '../../modules/tone';
 
 function Questionnaire({route, navigation}) {
@@ -24,11 +24,11 @@ function Questionnaire({route, navigation}) {
         //     return;
         // }
         if (!frequency.trim()) {
-            alert('Please Enter First Name');
+            alert('Please select listening hours per week');
             return;
         }
         if (!environment.trim()) {
-            alert('Please Enter Email');
+            alert('Please select an environment');
             return;
         }
 
@@ -62,7 +62,7 @@ function Questionnaire({route, navigation}) {
 
     return (
         <KeyboardAvoidingView
-            behavior = {Platform.OS == 'ios' ? 'padding': 'height'} 
+            behavior = {Platform.OS == 'ios' ? 'padding': 'height'}
             style = {[styles.content, styles.center]}
         >
             <TouchableWithoutFeedback>
