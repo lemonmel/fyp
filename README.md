@@ -16,5 +16,5 @@ npx expo start
 ```
 
 ## Credit
-This application was developed with the collaboration between Dr Kumar Seluakumaran from the Auditory lab, Dept of Physiology, Faculty of Medicine, University of Malaya and Faculty of Computer Sceience and Information Technology, University of Malaya
+This application was developed with the collaboration between Dr Kumar Seluakumaran from the Auditory lab, Dept of Physiology, Faculty of Medicine, University of Malaya and Faculty of Computer Sceience and Information Technology, University of Malaya <br/>
 Copytight @ 2023 University Malaya
