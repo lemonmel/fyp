@@ -1,4 +1,4 @@
-import { doc, getDoc, deleteDoc, addDoc, collection } from "firebase/firestore";
+import { doc, getDoc, deleteDoc, addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from '../database/firebase.js';
 // import { getNarrowbandResult, getNotchedResult, getPan, getAllFrequency } from "../../modules/tone";
 import { Timestamp } from '@firebase/firestore';
@@ -15,14 +15,14 @@ export function loadCurrentTest(test_id){
     return new Promise((resolve) => {
         const unsubscribe = async() => {
             data = {}
-            // const docRefR = doc(db, "test", test_id, 'readings', 'right'); 
+            // const docRefR = doc(db, "test", test_id, 'readings', 'right');
             // const docSnapR = await getDoc(docRefR);
             // let current = docSnapR.data();
             // data.notched_right = current.notched;
             // data.narrowband_right = current.narrowband;
             // data.FS_right = current.FS;
             // data.status_right = current.status;
-            // const docRefL = doc(db, "test", test_id, 'readings', 'left'); 
+            // const docRefL = doc(db, "test", test_id, 'readings', 'left');
             // const docSnapL = await getDoc(docRefL);
             // current = docSnapL.data();
             // data.notched_left = current.notched;
@@ -32,7 +32,7 @@ export function loadCurrentTest(test_id){
             // console.log(data);
             // resolve(data);
             // console.log(data);
-            const docRef = doc(db, "test", test_id); 
+            const docRef = doc(db, "test", test_id);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 console.log("Document data:", docSnap.data());
@@ -53,6 +53,14 @@ export function loadCurrentTest(test_id){
             console.log(data)
         }
         return unsubscribe();
+    });
+}
+
+export async function deleteUserReport(uid){
+    const q = query(collection(db, "test"), where("userID", "==", uid));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        deleteData(doc.id)
     });
 }
 
@@ -87,7 +95,7 @@ export function addData(toneModule){
             for(let i = 0; i < frequencies.length; i++){
                 notched[frequencies[i]]= nnresult[i]
             }
-        
+
             let status = "pass"
             const fs_data = Object.keys(narrow).reduce((result, key) => {
                 const difference = narrow[key] - notched[key];
@@ -97,14 +105,14 @@ export function addData(toneModule){
                 result[+key] = difference;
                 return result;
             }, {});
-    
+
             try {
                 const docRef = await addDoc(collection(db, "test"), {
                     userID: auth.currentUser.uid,
                     date: Timestamp.now(),
                     type: type,
                     status: status,
-                    side: pan, 
+                    side: pan,
                     notched: notched,
                     narrowband: narrow,
                     FS: fs_data
@@ -118,4 +126,3 @@ export function addData(toneModule){
         return unsubscribe();
     });
 }
-
