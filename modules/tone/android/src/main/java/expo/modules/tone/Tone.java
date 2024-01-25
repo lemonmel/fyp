@@ -135,19 +135,6 @@ public class Tone {
         // Write the generated sound to the audio track
         audioTrack.write(generatedSound, 0, generatedSound.length);
 
-        try {
-            File file = new File("AudioFile/TestOutput.mp3");
-            FileOutputStream fos = new FileOutputStream(file);
-
-            fos.write(generatedSound); // Write the audio data to the file
-            fos.close();
-
-            // Additional logic if needed (e.g., close resources)
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle file I/O exception
-        }
-
         if (pan == 0) {
             audioTrack.setStereoVolume(0, (float) threshold);
         } else {

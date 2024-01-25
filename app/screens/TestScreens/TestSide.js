@@ -42,7 +42,7 @@ function TestSide({navigation}) {
             {closeIcon()}
             {progress()}
             <View style={[styles.center, {marginHorizontal: 50}]}>
-                <Text style={[styles.center_text]}>Choose the side or ear to be tested.</Text>
+                <Text style={[styles.center_text]}>Choose the side of ear to be tested.</Text>
                 <TouchableOpacity style = {styles.button} onPress={setRightTest}>
                     <Text style = {styles.text_in_button}> Right Ear </Text>
                 </TouchableOpacity>

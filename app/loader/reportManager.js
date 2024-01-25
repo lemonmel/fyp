@@ -1,4 +1,4 @@
-import { doc, getDoc, deleteDoc, addDoc, collection } from "firebase/firestore";
+import { doc, getDoc, deleteDoc, addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from '../database/firebase.js';
 import { getNarrowbandResult, getNotchedResult, getPan, getAllFrequency } from "../../modules/tone";
 import { Timestamp } from '@firebase/firestore';
@@ -53,6 +53,14 @@ export function loadCurrentTest(test_id){
             console.log(data)
         }
         return unsubscribe();
+    });
+}
+
+export async function deleteUserReport(uid){
+    const q = query(collection(db, "test"), where("userID", "==", uid));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        deleteTest(doc.id)
     });
 }
 

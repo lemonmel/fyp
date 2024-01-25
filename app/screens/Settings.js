@@ -7,6 +7,7 @@ import { doc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextInput } from 'react-native-gesture-handler';
 import { Loading } from '../element/Loading.js';
+import { deleteUserReport } from '../loader/reportManager.js';
 
 function Profile({navigation}) {
     const [thisUser, setUser] = useState('');
@@ -46,6 +47,7 @@ function Profile({navigation}) {
             // User re-authenticated.
             console.log('DeleteAccount', uid);
             await deleteDoc(doc(db, "users", uid));
+            await deleteUserReport(uid);
             deleteUser(user).then(async() => {
                 navigation.navigate('Login');
             }).catch((error) => {

@@ -11,6 +11,7 @@ function TrialTest({navigation, route}) {
     const trialThreshold = [0.06, 0.06, 0, 0, 0.06]
     const [currentIndex, setCurrentIndex] = useState(0)
     const [audioPlayed, setAudioPlayed] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
 
     useEffect(() => {
         playSound();
@@ -38,6 +39,7 @@ function TrialTest({navigation, route}) {
     }
 
     const clickYes = () => {
+        setIsPlaying(true)
         if(getThreshold() > 0){ //correct
             let temp = mark + 0.2
             setMark(temp)
@@ -48,6 +50,7 @@ function TrialTest({navigation, route}) {
     }
 
     const clickNo = () => {
+        setIsPlaying(true)
         if(getThreshold() == 0){ //correct
             let temp = mark + 0.2
             setMark(temp)
@@ -66,7 +69,7 @@ function TrialTest({navigation, route}) {
 
     const nextTrial = () => {
         if (currentIndex == 4) {
-            Alert.alert("Trial Test Pass!","You can now start the test!");
+            Alert.alert("Trial Test Pass!","You can now start the test! Press 'Start Test'");
         } else {
             setCurrentIndex(prevCurrentIndex => prevCurrentIndex + 1);
             playSound();
@@ -85,6 +88,7 @@ function TrialTest({navigation, route}) {
                 setAudioPlayed(false); // Reset the flag after audio is played
                 setTimeout(() => {
                     setText('');
+                    setIsPlaying(false);
                 }, 500);
             }, 1000);
         } else {
@@ -105,10 +109,10 @@ function TrialTest({navigation, route}) {
                 <Text style={[styles.heading, {fontSize: width*0.07, textAlign:'center'}]}>{text}</Text>
                 <Text style={[styles.center_text, {textAlign:'center'}]}>Can you hear the tone?</Text>
                 <View style = {[styles.button, {flexDirection: 'row'}]}>
-                    <TouchableOpacity style = {[styles.button_in_button, {borderRightWidth: 2}]} onPress={clickYes}>
+                    <TouchableOpacity style = {[styles.button_in_button, {borderRightWidth: 2}]} onPress={clickYes} disabled={isPlaying}>
                         <Text style = {styles.text_in_button}> Yes </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style = {styles.button_in_button} onPress={clickNo}>
+                    <TouchableOpacity style = {styles.button_in_button} onPress={clickNo} disabled={isPlaying}>
                         <Text style = {styles.text_in_button}> No </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style = {[styles.button_in_button, {borderLeftWidth: 2}]} onPress={playSound}>
