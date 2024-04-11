@@ -13,7 +13,7 @@ public class Noise {
         this.threshold = threshold;
     }
 
-    public void setCurrentThreshold(int frequency) {
+    public void setCurrentThreshold(int frequency) { //define rules for initial noise voltage for each frequency
         if (frequency == 500 || frequency == 1000 || frequency == 4000) {
             setThreshold(0.1);
         } else if (frequency == 2000) {
