@@ -17,7 +17,7 @@ public class Tone {
     private int default_db = 80;
     private int db = 80;
     private int pan = 0; // 0 if left, 1 is right
-    private double[] thresholdSet = { 0.06, 0.06, 0.03, 0.09, 0.03 };
+    private double[] thresholdSet = { 0.06, 0.06, 0.03, 0.09, 0.03 }; // starting threshold for each frequency
     // private AudioTrack audio;
 
     public int getPan() {
@@ -60,7 +60,7 @@ public class Tone {
         return (getFrequency() == testFreq[testFreq.length - 1]);
     }
 
-    public void revertSettings() {
+    public void revertSettings() { // reseting threhold and frequency when user done/ quit testing
         thresholdSet[0] = 0.06;
         thresholdSet[1] = 0.06;
         thresholdSet[2] = 0.03;
@@ -72,9 +72,9 @@ public class Tone {
         this.db = this.default_db;
     }
 
-    public void nextSettings() {
+    public void nextSettings() { // setting up for notched noise initial db
         this.freqIndex = 0;
-        this.default_db = 65;
+        this.default_db = 65; 
         for (int i = 0; i < thresholdSet.length; i++) {
             this.thresholdSet[i] /= Math.pow(10.0, 15.0 / 20);
         }
