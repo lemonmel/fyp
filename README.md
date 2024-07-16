@@ -17,7 +17,7 @@ npm install
 npx expo start
 ```
 ## For More Insights
-[Final Year Project Report](https://docs.google.com/document/d/1Z8b84S_NghXPY9rqTmx7UCLZSBrWa2KyH3wt2FdzKVE/edit#heading=h.fsdamc4uja9d)
+[Final Year Project Report](https://drive.google.com/file/d/1kFWYPquZvanpYZiz3h8v3ZRCtms4EpaA/view?usp=share_link)
 
 ## Credit
 This application was developed with the collaboration between Dr Kumar Seluakumaran from the Auditory lab, Dept of Physiology, Faculty of Medicine, University of Malaya and Faculty of Computer Sceience and Information Technology, University of Malaya <br/>
